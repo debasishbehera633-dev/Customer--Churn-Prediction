@@ -2,6 +2,7 @@
 # Customer Churn Prediction Dashboard - core implementation
 
 from pathlib import Path
+import streamlit as st
 import sqlite3
 import joblib
 import numpy as np
