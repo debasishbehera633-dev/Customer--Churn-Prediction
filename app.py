@@ -536,11 +536,9 @@ def run_sql_queries():
                 connection,
             )
 
-            print(
-                f"\n{name}"
-            )
-
-            print(result)
+            st.subheader(name)
+            st.code(sql, language="sql")
+            st.dataframe(result, use_container_width=True)
 
 
 # =========================
