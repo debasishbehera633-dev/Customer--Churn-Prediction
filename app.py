@@ -525,20 +525,16 @@ def run_sql_queries():
             """,
     }
 
-    with sqlite3.connect(
-        DATABASE_FILE
-    ) as connection:
+    with sqlite3.connect(DATABASE_FILE) as connection:
+     for name, sql in queries.items():
+        result = pd.read_sql_query(
+            sql,
+            connection
+        )
 
-        for name, sql in queries.items():
-
-            result = pd.read_sql_query(
-                sql,
-                connection,
-            )
-
-            st.subheader(name)
-            st.code(sql, language="sql")
-            st.dataframe(result, use_container_width=True)
+        st.subheader(name)
+        st.code(sql, language="sql")
+        st.dataframe(result, use_container_width=True)
 
 
 # =========================
